@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Membership
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+
+<style>
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email], input[type=number] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email], input[type=number] {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+
+<form method="POST" action="/membership">
+    {% csrf_token %}
+  <div class="container">
+    <h1>Membership</h1>
+    <p>Fill in this form to become <b>PRIME</b> member.</p>
+    <hr>
+    
+    <label for="name"><b>Full Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="name" id="name" required>
+    
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+    
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter your Password" name="password" id="password" required>
+
+    <label for="phone"><b>Phone Number</b></label>
+    <input type="number" placeholder="Enter Phone Number" name="phone" id="phone" required>
+    
+    <label for="gender"><b>Gender</b></label>
+    <select class="form-select" aria-label="Default select example" name="gender"required>
+        <option selected>Select</option>
+        <option value="gender">Male</option>
+        <option value="gender">Female</option>
+        <option value="gender">None</option>
+    </select>
+    <br>
+
+    <label for="byear"><b>Year of Birth</b></label>
+    <input type="number" placeholder="Enter Birth year" name="byear" id="byear" size="4" required>
+
+    <label for="sub"><b>Subscription</b></label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radio" id="radio" checked>
+        <label class="form-check-label" for="radio">
+          <b>1 Month - $ 9.99</b>
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radio" id="radio">
+        <label class="form-check-label" for="radio">
+          <b>6 Months - $ 49.99</b>
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radio" id="radio">
+        <label class="form-check-label" for="radio">
+          <b>12 Months - $ 99.99</b>
+        </label>
+    </div>
+    <hr>
+    <center><input type="checkbox" required>  I agree to <a href="">Terms & Privacy</a>.</center>
+    <br>
+    <input type="submit" value="Submit" class="registerbtn">
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="/login">Log in</a>.</p>
+  </div>
+</form>
+
+{% endblock body %}
+

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Product
+{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+<form method="POST" action="" class="container px-4 my-4">
+    {% csrf_token %}
+    <br><br>
+    <center>{{form}}</center>
+    <br><br>
+    <div>
+    <center>
+        <input class="btn btn-primary" type="submit" value="Add">
+        <a href="/products" class="btn btn-danger">Cancel</a>
+    </center>
+    </div>
+</form>
+
+{% endblock body%}
